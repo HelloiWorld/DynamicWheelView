@@ -4,30 +4,29 @@
 ![Image](/2AA67A66-7EFF-40E3-B917-888EB9469492.png)
 
 ###使用方法  
-import "DynamicWheelView.h"   
-#####实现DynamicWheelDelegate   
-
-DynamicWheelView *dynamicWheelView=[[DynamicWheelView alloc] initWithFrame:CGRectMake(0, 102, [UIScreen mainScreen].bounds.size.width, 326)];  
-dynamicWheelView.delegate=self;  
-UIImage *image1=[UIImage imageNamed:@"1.jpg"];  
-UIImage *image2=[UIImage imageNamed:@"2.jpg"];  
-UIImage *image3=[UIImage imageNamed:@"3.jpg"];  
-UIImage *image4=[UIImage imageNamed:@"4.jpg"];  
-UIImage *image5=[UIImage imageNamed:@"5.jpg"];  
-dynamicWheelView.wheelArray=[NSMutableArray arrayWithObjects:@{@"image":image1},@{@"image":image2},@{@"image":image3},@{@"image":image4},@{@"image":image5}, nil];  
-[self.view addSubview:dynamicWheelView];  
+    #import "DynamicWheelView.h"   
+#####实现DynamicWheelDelegate  
+    DynamicWheelView *dynamicWheelView=[[DynamicWheelView alloc] initWithFrame:CGRectMake(0, 102, [UIScreen mainScreen].bounds.size.width, 326)];  
+    dynamicWheelView.delegate=self;  
+    UIImage *image1=[UIImage imageNamed:@"1.jpg"];  
+    UIImage *image2=[UIImage imageNamed:@"2.jpg"];  
+    UIImage *image3=[UIImage imageNamed:@"3.jpg"];  
+    UIImage *image4=[UIImage imageNamed:@"4.jpg"];  
+    UIImage *image5=[UIImage imageNamed:@"5.jpg"];  
+    dynamicWheelView.wheelArray=[NSMutableArray arrayWithObjects:@{@"image":image1},@{@"image":image2},@{@"image":image3},@{@"image":image4},@{@"image":image5}, nil];  
+    [self.view addSubview:dynamicWheelView];  
   
 #####实现点击和上下拉的代理DynamicWheelDelegate  
--(void)select:(NSInteger)index{  
+    -(void)select:(NSInteger)index{  
     //默认index从1开始,等同于初始数组index为0  
     NSLog(@"单击了%ld",(long)index);  
-}  
+    }  
   
--(void)refreshData{  
-    NSLog(@"刷新数据");  
-}  
+    -(void)refreshData{
+    NSLog(@"刷新数据");
+    }  
   
--(void)loadData{  
+    -(void)loadData{  
     NSLog(@"没有数据了");  
-}  
+    }  
 
