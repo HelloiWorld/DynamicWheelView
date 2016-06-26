@@ -1,7 +1,7 @@
 # DynamicWheelView
 动态轮子，修改自code4app上项目MNWheelView（静态多ImageView实现图片轮播），用3个ImageView实现无限循环的功能，类似TableView重用机制，有点击以及下拉刷新和上拉加载更多的代理方法
 
-![Image](https://github.com/HelloiWorld/DynamicWheelView/tree/master/DynamicWheelView/Assets.xcassets/2AA67A66-7EFF-40E3-B917-888EB9469492.imageset/2AA67A66-7EFF-40E3-B917-888EB9469492.png)
+![Image](https://github.com/HelloiWorld/DynamicWheelView/blob/master/DynamicWheelView/Assets.xcassets/2AA67A66-7EFF-40E3-B917-888EB9469492.imageset/2AA67A66-7EFF-40E3-B917-888EB9469492.png)
 
 ###使用方法  
     #import "DynamicWheelView.h"   
