@@ -3,30 +3,23 @@
 //  CustomPromptView
 //
 //  Created by pzk on 16/6/8.
-//  Copyright © 2016年 Aone. All rights reserved.
+//  Copyright © 2016年 睿震. All rights reserved.
 //
 
 #import "DynamicWheelView.h"
 
-//快速生成颜色
-#define MNRGB(r,g,b) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0])
-//动画时间
-#define AnimateDuration 0.3
-#define TopViewHeight 84
-#define CenterViewHeight 104
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenScale [UIScreen mainScreen].bounds.size.width/320.0
+
+#define AnimateDuration 0.3     //动画时间
+#define TopViewHeight 84*kScreenScale
+#define CenterViewHeight 104*kScreenScale
 
 @implementation DynamicWheelView{
     UIView *_baseView;
     BOOL isAnimating;
     //中间的ImageView所在数组的位置（默认index=tag+1，使用数组时需减1）
     NSInteger selectedIndex;
-}
-
--(NSArray *)cacheArray{
-    if (!_cacheArray) {
-        _cacheArray = [NSArray arrayWithArray:_wheelArray];
-    }
-    return _cacheArray;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -41,9 +34,9 @@
 
 - (void)initBaseView{
     _baseView=[[UIView alloc]initWithFrame:self.bounds];
-//    NSLog(@"baseView: %@",NSStringFromCGRect(_baseView.frame));
+    //    NSLog(@"baseView: %@",NSStringFromCGRect(_baseView.frame));
     [self addSubview:_baseView];
-    
+    //初始默认选中中间的视图
     selectedIndex=2;
     
     UISwipeGestureRecognizer *recUp=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeUpDown:)];
@@ -58,8 +51,8 @@
 -(void)setWheelArray:(NSMutableArray *)wheelArray{
     _wheelArray=wheelArray;
     
-    CGFloat marginTop=14;
-    CGFloat marginCenter=11;
+    CGFloat marginTop=14*kScreenScale;
+    CGFloat marginCenter=11*kScreenScale;
     
     for (int i=0; i<3; i++) {
         
@@ -79,10 +72,10 @@
         imageView.layer.cornerRadius = 4;
         imageView.clipsToBounds = YES;
         //添加四个边阴影
-//        imageView.layer.shadowColor = [UIColor blackColor].CGColor;//阴影颜色
-//        imageView.layer.shadowOffset = CGSizeMake(4,4);//偏移距离
-//        imageView.layer.shadowOpacity = 0.8;//不透明度
-//        imageView.layer.shadowRadius = 2.0;//半径
+        //        imageView.layer.shadowColor = [UIColor blackColor].CGColor;//阴影颜色
+        //        imageView.layer.shadowOffset = CGSizeMake(4,4);//偏移距离
+        //        imageView.layer.shadowOpacity = 0.8;//不透明度
+        //        imageView.layer.shadowRadius = 2.0;//半径
         // imageView.contentMode=UIViewContentModeScaleAspectFill;
         
         [_baseView addSubview:imageView];
@@ -91,7 +84,7 @@
     CGFloat btnX=_baseView.frame.origin.x;
     CGFloat btnY=_baseView.frame.origin.y;
     CGFloat btnW=_baseView.frame.size.width;
-
+    
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame=CGRectMake(72+btnX, btnY+marginTop, btnW-144, TopViewHeight);
     NSLog(@"btn1:%@",NSStringFromCGRect(btn.frame));
@@ -156,10 +149,9 @@
         selectedIndex--;
         if (selectedIndex<2) {
 #pragma mark- 刷新数据
-//            selectedIndex=_wheelArray.count+1;
+            selectedIndex=2;
             [self performSelectorOnMainThread:@selector(refreshData) withObject:self waitUntilDone:YES];
             
-            selectedIndex=2;
             return;
         }
         
@@ -171,7 +163,7 @@
         selectedIndex++;
         if (selectedIndex>_wheelArray.count-1) {
 #pragma mark- 加载数据
-//            selectedIndex=0;
+            selectedIndex-=1;
             [self loadData];
             return;
         }
@@ -268,8 +260,8 @@
         }
     }
     if (maxW>0) {
-//        for (int j=0; j<count; j++)
-            [_baseView bringSubviewToFront:maxWImageView];
+        //        for (int j=0; j<count; j++)
+        [_baseView bringSubviewToFront:maxWImageView];
     }
 }
 
@@ -282,11 +274,14 @@
     });
     //等待异步下载完成才执行
     dispatch_barrier_async(concurrentQueue, ^(){
-//        [_wheelArray removeAllObjects];
-        [_wheelArray addObjectsFromArray:self.cacheArray];
-        isAnimating=NO;
+        isAnimating = NO;
+        if(self.appendArray.count == 0){
+            return;
+        }
+        [_wheelArray removeAllObjects];
+        [_wheelArray addObjectsFromArray:self.appendArray];
     });
-
+    
 }
 
 #pragma mark- 上滑加载
@@ -299,8 +294,11 @@
     });
     //等待异步下载完成才执行
     dispatch_barrier_async(concurrentQueue, ^(){
-        [_wheelArray addObjectsFromArray:self.cacheArray];
-        
+        if (self.appendArray.count == 0) {
+            isAnimating = NO;
+            return;
+        }
+        [_wheelArray addObjectsFromArray:self.appendArray];
         [self performSelectorOnMainThread:@selector(animationScrollToBottom) withObject:self waitUntilDone:YES];
     });
 }

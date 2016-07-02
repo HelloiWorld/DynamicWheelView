@@ -10,6 +10,7 @@
 #import "DynamicWheelView.h"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenScale [UIScreen mainScreen].bounds.size.width/320.0
 
 @interface ViewController ()<DynamicWheelDelegate>
 
@@ -22,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _dynamicWheelView=[[DynamicWheelView alloc] initWithFrame:CGRectMake(0, 102, kScreenWidth, 326)];
+    _dynamicWheelView=[[DynamicWheelView alloc] initWithFrame:CGRectMake(0, 102, kScreenWidth, 326*kScreenScale)];
     _dynamicWheelView.delegate=self;
     _dynamicWheelView.wheelArray=[self wheel];
     [self.view addSubview:_dynamicWheelView];
@@ -50,10 +51,15 @@
 }
 
 -(void)refreshData{
-    NSLog(@"没有数据了");
+    //网络抓取的数据赋给appendArray
+    
+    NSLog(@"刷新数据");
 }
 
 -(void)loadData{
+    //网络抓取的数据赋给appendArray
+    
+    NSLog(@"没有数据了");
     sleep(1);
 }
 

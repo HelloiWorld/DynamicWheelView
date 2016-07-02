@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @protocol DynamicWheelDelegate <NSObject>
+//点击按钮的序号【1，+00）
 -(void)select:(NSInteger)index;
-//下滑刷新数据
+//下滑⬇️刷新数据,将网络抓取的数据赋给appendArray
 -(void)refreshData;
-//上滑加载数据
+//上滑⬆️加载数据,将网络抓取的数据赋给appendArray
 -(void)loadData;
 @end
 
@@ -20,12 +21,11 @@
 
 @property (weak, nonatomic) id <DynamicWheelDelegate> delegate;
 
-//若传入的界面还可以做其他事，扩展字典
 //传入数组 @[@{@"image":UIImage,@"other":@""},@{@"image":UIImage},nil]
 @property(nonatomic,strong) NSMutableArray *wheelArray;
 
 //附加数组，用来处理获取网络加载后的数据
-@property(nonatomic,strong) NSArray *cacheArray;
+@property(nonatomic,strong) NSArray *appendArray;
 
 //重写初始化方法
 -(instancetype)initWithFrame:(CGRect)frame;
