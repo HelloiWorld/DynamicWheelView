@@ -3,7 +3,7 @@
 //  CustomPromptView
 //
 //  Created by pzk on 16/6/8.
-//  Copyright © 2016年 睿震. All rights reserved.
+//  Copyright © 2016年 Aone. All rights reserved.
 //
 
 #import "DynamicWheelView.h"

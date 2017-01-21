@@ -14,6 +14,7 @@
 		9A4971081D1FEAF0002CD67D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A4971071D1FEAF0002CD67D /* Assets.xcassets */; };
 		9A49710B1D1FEAF0002CD67D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A4971091D1FEAF0002CD67D /* LaunchScreen.storyboard */; };
 		9A4971151D1FEBF5002CD67D /* DynamicWheelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A4971141D1FEBF5002CD67D /* DynamicWheelView.m */; };
+		9A801C8B1E335C8F00EB38EA /* DynamicWheelImage.gif in Resources */ = {isa = PBXBuildFile; fileRef = 9A801C8A1E335C8F00EB38EA /* DynamicWheelImage.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		9A49710C1D1FEAF0002CD67D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A4971131D1FEBF5002CD67D /* DynamicWheelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicWheelView.h; sourceTree = "<group>"; };
 		9A4971141D1FEBF5002CD67D /* DynamicWheelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicWheelView.m; sourceTree = "<group>"; };
+		9A801C8A1E335C8F00EB38EA /* DynamicWheelImage.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = DynamicWheelImage.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				9A4971121D1FEBC8002CD67D /* DynamicWheelView */,
 				9A4971011D1FEAF0002CD67D /* ViewController.h */,
 				9A4971021D1FEAF0002CD67D /* ViewController.m */,
+				9A801C8A1E335C8F00EB38EA /* DynamicWheelImage.gif */,
 				9A4971041D1FEAF0002CD67D /* Main.storyboard */,
 				9A4971071D1FEAF0002CD67D /* Assets.xcassets */,
 				9A4971091D1FEAF0002CD67D /* LaunchScreen.storyboard */,
@@ -151,6 +154,7 @@
 			files = (
 				9A49710B1D1FEAF0002CD67D /* LaunchScreen.storyboard in Resources */,
 				9A4971081D1FEAF0002CD67D /* Assets.xcassets in Resources */,
+				9A801C8B1E335C8F00EB38EA /* DynamicWheelImage.gif in Resources */,
 				9A4971061D1FEAF0002CD67D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +281,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DynamicWheelView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -289,6 +294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DynamicWheelView/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -316,6 +322,7 @@
 				9A4971111D1FEAF0002CD67D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
